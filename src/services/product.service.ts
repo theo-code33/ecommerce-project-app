@@ -1,3 +1,4 @@
+import { UpdateProduct } from "@/types/product.types";
 import axiosService from "./axios.service";
 
 const END_POINT = "/product";
@@ -23,7 +24,13 @@ const create = async (data: FormData) => {
 }
 
 const update = async (id: string, data: FormData) => {
-    const response = await axiosService.patch(`${END_POINT}/${id}`, data);
+    const product: UpdateProduct = {}
+    data.forEach((value, key) => {
+        product[key] = value;
+    })
+
+
+    const response = await axiosService.patch(`${END_POINT}/${id}`, product);
     return response.data;
 }
 

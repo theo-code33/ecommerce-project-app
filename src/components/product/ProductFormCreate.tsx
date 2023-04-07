@@ -45,11 +45,12 @@ const ProductFormCreate: React.FC<PropsCategories> = ({categories}) => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" id="name" onInput={handleChange}/>
-            <input type="text" name="description" id="description" onInput={handleChange}/>
-            <input type="number" name="price" id="price" defaultValue={0} onInput={handleChange}/>
-            <input type="number" name="quantity" id="quantity" defaultValue={1} onInput={handleChange}/>
-            <input type="file" name="image" id="image" />
+            <input type="text" name="name" id="name" onInput={handleChange} placeholder="name" required/>
+            <input type="text" name="description" id="description" onInput={handleChange} placeholder="description" required/>
+            <input type="number" name="price" id="price" defaultValue={0} onInput={handleChange} placeholder="price" required/>
+            <input type="number" name="quantity" id="quantity" defaultValue={1} onInput={handleChange} placeholder="quantity" required/>
+            <input type="file" name="image" id="image" required/>
+            <label htmlFor="category">Category</label>
             <select name="category" id="category" onInput={handleChange}>
                 {categories.map(category => (
                     <option key={category.id} value={category.id}>{category.name}</option>

@@ -5,7 +5,7 @@ import React from "react";
 
 const Product: React.FC<PropsProducts> = ({products}) => {
     return ( 
-        <div>
+        <div className="d-flex align-items-start justify-content-start gap-5">
             {products.map(product => (
               <ProductCard key={product.id} product={product} />  
             ))}

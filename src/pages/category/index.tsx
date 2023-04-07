@@ -6,7 +6,7 @@ const Category: React.FC<PropsCategories>  = ({categories}) => {
     return ( 
         <section className="category-container">
             <h1>Category</h1>
-            <div className="category-list">
+            <div className="category-list d-flex align-items-start justify-content-start gap-5">
                 {categories.map(category => (
                     <CategoryCard key={category.id} category={category} />
                 ))}

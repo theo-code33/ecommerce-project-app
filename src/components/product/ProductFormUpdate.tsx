@@ -35,6 +35,8 @@ const ProductFormUpdate: React.FC<PropsProductUpdate> = ({product, categories}) 
             if(image){
                 formData.append("image", image)
             }
+            console.log(formData);
+            
             await productServices.update(product.id, formData)
             setSuccess(true)
             setTimeout(() => {
@@ -47,11 +49,12 @@ const ProductFormUpdate: React.FC<PropsProductUpdate> = ({product, categories}) 
     }
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" id="name" defaultValue={credentials.name} onInput={handleChange}/>
-            <input type="text" name="description" id="description" defaultValue={credentials.description} onInput={handleChange}/>
-            <input type="number" name="price" id="price" defaultValue={credentials.price} onInput={handleChange}/>
-            <input type="number" name="quantity" id="quantity" defaultValue={credentials.quantity} onInput={handleChange}/>
+            <input type="text" name="name" id="name" defaultValue={credentials.name} placeholder="name" onInput={handleChange}/>
+            <input type="text" name="description" id="description" placeholder="description" defaultValue={credentials.description} onInput={handleChange}/>
+            <input type="number" name="price" id="price" placeholder="price" defaultValue={credentials.price} onInput={handleChange}/>
+            <input type="number" name="quantity" id="quantity" placeholder="quantity" defaultValue={credentials.quantity} onInput={handleChange}/>
             <input type="file" name="image" id="image" />
+            <label htmlFor="category">Category</label>
             <select name="category" id="category" onInput={handleChange}>
                 {categories.map(category => (
                     <option key={category.id} value={category.id} defaultChecked={credentials.category == category.id ? true : false}>{category.name}</option>

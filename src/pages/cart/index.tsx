@@ -51,6 +51,9 @@ const Cart = () => {
                             </div>
                         </div>
                     ))}
+                    <div>
+                        <h3>Amount: {order.amount} €</h3>
+                    </div>
                 </div>
             ) : (
                 <p>No items in cart</p>

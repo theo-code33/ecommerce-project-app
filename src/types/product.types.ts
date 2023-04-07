@@ -20,3 +20,6 @@ export type CreateProduct = {
     quantity: number;
     category: string;
 }
+export type UpdateProduct = {
+    [key: string]: string | number | boolean | File;
+}

@@ -38,8 +38,8 @@ const UserFormLogin = () => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="text" name="email" id="email" onInput={handleChange}/>
-            <input type="password" name="password" id="password" onInput={handleChange}/>
+            <input type="text" name="email" id="email" placeholder="email" onInput={handleChange}/>
+            <input type="password" name="password" id="password" placeholder="password" onInput={handleChange}/>
             <button type="submit">Se connecter</button>
             {
                 error && <p>Une erreur est survenue</p>

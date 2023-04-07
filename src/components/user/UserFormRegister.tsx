@@ -33,10 +33,10 @@ const UserFormRegister = () => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" id="name" onInput={handleChange}/>
-            <input type="text" name="email" id="email" onInput={handleChange}/>
-            <input type="password" name="password" id="password" onInput={handleChange}/>
-            <input type="text" name="address" id="address"  onInput={handleChange}/>
+            <input type="text" name="name" id="name" placeholder="name" onInput={handleChange} required/>
+            <input type="text" name="email" id="email" placeholder="email" onInput={handleChange} required/>
+            <input type="password" name="password" id="password" placeholder="password" onInput={handleChange} required/>
+            <input type="text" name="address" id="address" placeholder="address"  onInput={handleChange} required/>
             <button type="submit">S'inscrire</button>
         </form>
      );
