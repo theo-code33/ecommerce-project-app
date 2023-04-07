@@ -1,19 +1,25 @@
 import { OrderContext } from "@/context/cart.context";
+import { UserContext } from "@/context/user.context";
 import orderService from "@/services/order.service";
 import orderItemService from "@/services/orderItem.service";
 import productServices from "@/services/product.service";
 import { PropsProduct } from "@/types/generics.types";
 import { OrderContextType } from "@/types/order.types";
 import { Product } from "@/types/product.types";
+import { UserContextType } from "@/types/user.types";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
 
 const productItem: React.FC<PropsProduct> = ({product}) => {
     const { order, setOrder } = useContext(OrderContext) as OrderContextType;
+    const { user } = useContext(UserContext) as UserContextType;
+    const router = useRouter()
 
     const addToCart = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if(user === null) return router.push("/login");
         const quantity = parseInt(e.currentTarget.quantity.value)
         if (quantity > 0) {
             if(order){
@@ -61,7 +67,7 @@ const productItem: React.FC<PropsProduct> = ({product}) => {
                     const newOrder = await orderService.create({
                         status: "pending",
                         amount: product.price * quantity,
-                        user: "245626e9-dc48-4a71-9ebd-a5280504dc6f"
+                        user: user.id
                     })
                     const orderItem = await orderItemService.create({
                         order: newOrder.id,

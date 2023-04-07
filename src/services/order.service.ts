@@ -13,6 +13,11 @@ const getById = async (id: string) => {
     return response.data;
 }
 
+const getByUserId = async (id: string) => {
+    const response = await axiosService.get(`${END_POINT}/user/${id}`);
+    return response.data;
+}
+
 const create = async (data: OrderCreate) => {
     const response = await axiosService.post(END_POINT, data);
     return response.data;
@@ -31,6 +36,7 @@ const remove = async (id: string) => {
 const orderService = {
     getAll,
     getById,
+    getByUserId,
     create,
     update,
     remove
